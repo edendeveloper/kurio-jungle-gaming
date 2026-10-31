@@ -1,0 +1,18 @@
+{
+  "baseUrl": "http://127.0.0.1:63469",
+  "healthResponse": {
+    "status": 200,
+    "contentType": "application/json"
+  },
+  "preflight": {
+    "title": "KURIO",
+    "language": "pt-BR",
+    "fontReady": true,
+    "mainImage": {
+      "src": "http://127.0.0.1:63469/assets/nfts/emerald-ape.png",
+      "width": 1254
+    },
+    "workerController": "http://127.0.0.1:63469/mockServiceWorker.js"
+  },
+  "socket": "event-received"
+}

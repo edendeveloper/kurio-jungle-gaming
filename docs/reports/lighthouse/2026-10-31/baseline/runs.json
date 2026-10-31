@@ -1,0 +1,206 @@
+[
+  {
+    "page": "home",
+    "profile": "desktop",
+    "run": 1,
+    "report": "home-desktop-run-1.report.json",
+    "scores": {
+      "performance": 78,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 5455.4882,
+      "cls": 0.003514912881604754,
+      "tbtMs": 141
+    }
+  },
+  {
+    "page": "home",
+    "profile": "desktop",
+    "run": 2,
+    "report": "home-desktop-run-2.report.json",
+    "scores": {
+      "performance": 77,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 5551.962000000001,
+      "cls": 0.003514912881604754,
+      "tbtMs": 164.5
+    }
+  },
+  {
+    "page": "home",
+    "profile": "desktop",
+    "run": 3,
+    "report": "home-desktop-run-3.report.json",
+    "scores": {
+      "performance": 78,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 5427.321899999999,
+      "cls": 0.003514912881604754,
+      "tbtMs": 140
+    }
+  },
+  {
+    "page": "nft-emerald-ape-042",
+    "profile": "desktop",
+    "run": 1,
+    "report": "nft-emerald-ape-042-desktop-run-1.report.json",
+    "scores": {
+      "performance": 88,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 3759.308,
+      "cls": 0.02211056401481737,
+      "tbtMs": 133
+    }
+  },
+  {
+    "page": "nft-emerald-ape-042",
+    "profile": "desktop",
+    "run": 2,
+    "report": "nft-emerald-ape-042-desktop-run-2.report.json",
+    "scores": {
+      "performance": 89,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 3743.7740000000003,
+      "cls": 0.02211056401481737,
+      "tbtMs": 106
+    }
+  },
+  {
+    "page": "nft-emerald-ape-042",
+    "profile": "desktop",
+    "run": 3,
+    "report": "nft-emerald-ape-042-desktop-run-3.report.json",
+    "scores": {
+      "performance": 88,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 3777.221025,
+      "cls": 0.02211056401481737,
+      "tbtMs": 116.5
+    }
+  },
+  {
+    "page": "home",
+    "profile": "mobile",
+    "run": 1,
+    "report": "home-mobile-run-1.report.json",
+    "scores": {
+      "performance": 78,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 5448.5857,
+      "cls": 0.003514912881604754,
+      "tbtMs": 139
+    }
+  },
+  {
+    "page": "home",
+    "profile": "mobile",
+    "run": 2,
+    "report": "home-mobile-run-2.report.json",
+    "scores": {
+      "performance": 78,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 5454.9277999999995,
+      "cls": 0.003514912881604754,
+      "tbtMs": 136.5
+    }
+  },
+  {
+    "page": "home",
+    "profile": "mobile",
+    "run": 3,
+    "report": "home-mobile-run-3.report.json",
+    "scores": {
+      "performance": 79,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 5442.3958999999995,
+      "cls": 0.003514912881604754,
+      "tbtMs": 129.5
+    }
+  },
+  {
+    "page": "nft-emerald-ape-042",
+    "profile": "mobile",
+    "run": 1,
+    "report": "nft-emerald-ape-042-mobile-run-1.report.json",
+    "scores": {
+      "performance": 87,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 3806.946,
+      "cls": 0.02211056401481737,
+      "tbtMs": 162.5
+    }
+  },
+  {
+    "page": "nft-emerald-ape-042",
+    "profile": "mobile",
+    "run": 2,
+    "report": "nft-emerald-ape-042-mobile-run-2.report.json",
+    "scores": {
+      "performance": 88,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 3771.6383749999995,
+      "cls": 0.02211056401481737,
+      "tbtMs": 119
+    }
+  },
+  {
+    "page": "nft-emerald-ape-042",
+    "profile": "mobile",
+    "run": 3,
+    "report": "nft-emerald-ape-042-mobile-run-3.report.json",
+    "scores": {
+      "performance": 88,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 92
+    },
+    "metrics": {
+      "lcpMs": 3737.7329999999997,
+      "cls": 0.02211056401481737,
+      "tbtMs": 113.5
+    }
+  }
+]

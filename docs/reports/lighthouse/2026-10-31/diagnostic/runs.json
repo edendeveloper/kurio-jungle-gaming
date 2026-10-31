@@ -1,0 +1,24 @@
+[
+  {
+    "page": "nft-emerald-ape-042",
+    "profile": "mobile",
+    "viewport": {
+      "width": 414,
+      "height": 896,
+      "mobile": true
+    },
+    "run": 1,
+    "report": "nft-emerald-ape-042-mobile-run-1.report.json",
+    "scores": {
+      "performance": 51,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "lcpMs": 5113.07375,
+      "cls": 0.918915179287507,
+      "tbtMs": 287.4999999999998
+    }
+  }
+]

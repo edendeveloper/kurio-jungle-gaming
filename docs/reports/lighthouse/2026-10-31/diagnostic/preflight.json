@@ -1,0 +1,32 @@
+{
+  "baseUrl": "http://127.0.0.1:49286",
+  "healthResponse": {
+    "status": 200,
+    "contentType": "application/json"
+  },
+  "publicAssets": {
+    "favicon": {
+      "status": 200,
+      "contentType": "image/svg+xml"
+    },
+    "robots": {
+      "status": 200,
+      "contentType": "text/plain",
+      "body": "User-agent: *\nAllow: /\n"
+    }
+  },
+  "preflight": {
+    "title": "Emerald Ape #042 | Kurio",
+    "language": "pt-BR",
+    "fontReady": true,
+    "mainImage": {
+      "src": "http://127.0.0.1:49286/assets/nfts/emerald-ape-512.webp",
+      "width": 80
+    },
+    "workerController": "http://127.0.0.1:49286/mockServiceWorker.js"
+  },
+  "socket": "event-received",
+  "consoleErrors": [],
+  "pageErrors": [],
+  "badResponses": []
+}

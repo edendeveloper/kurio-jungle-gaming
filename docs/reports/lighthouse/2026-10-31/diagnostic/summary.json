@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "phase": "diagnostic",
+    "capturedAt": "2026-10-31T05:53:21.741Z",
+    "node": "v26.13.0",
+    "npm": "npm/12.2.1",
+    "os": "win32 10.0.19045 x64",
+    "playwright": "^1.64.1",
+    "chromium": "156.0.8078.4",
+    "lighthouse": "13.6.0",
+    "chromeLauncher": "1.2.2",
+    "lighthouseConfig": "Mobile: lighthouse.config.json extends lighthouse:default with no overrides. Desktop: built-in Lighthouse desktop preset; config-path is omitted because it would override the preset. Screen viewport only is set to 414x896 mobile and 1440x900 desktop to match design references; throttling and scoring remain the Lighthouse defaults.",
+    "chromeLaunch": "ChromeLauncher default flags plus headless and no-sandbox required by this Windows runner; Lighthouse scoring/throttling defaults are unchanged",
+    "environment": "optimized Vite demo preview with MSW and Socket.IO active",
+    "throttling": "Lighthouse defaults for selected profile",
+    "runsPerPageAndProfile": "diagnostic subset",
+    "runFilter": [
+      "nft-emerald-ape-042:mobile"
+    ]
+  },
+  "medians": [
+    {
+      "page": "nft-emerald-ape-042",
+      "profile": "mobile",
+      "scores": {
+        "performance": 51,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 5113.07375,
+        "cls": 0.918915179287507,
+        "tbtMs": 287.4999999999998
+      }
+    }
+  ]
+}

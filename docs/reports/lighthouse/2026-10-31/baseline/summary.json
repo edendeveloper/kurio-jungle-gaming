@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "phase": "baseline",
+    "capturedAt": "2026-10-31T05:29:07.915Z",
+    "node": "v26.13.0",
+    "npm": "npm/12.2.1",
+    "os": "win32 10.0.19045 x64",
+    "playwright": "^1.64.1",
+    "chromium": "156.0.8078.4",
+    "lighthouse": "13.6.0",
+    "chromeLauncher": "1.2.2",
+    "lighthouseConfig": "lighthouse.config.json (extends lighthouse:default; no audit-setting overrides)",
+    "chromeLaunch": "ChromeLauncher default flags plus headless and no-sandbox required by this Windows runner; Lighthouse scoring/throttling defaults are unchanged",
+    "environment": "optimized Vite demo preview with MSW and Socket.IO active",
+    "throttling": "Lighthouse defaults for selected profile",
+    "runsPerPageAndProfile": 3
+  },
+  "medians": [
+    {
+      "page": "home",
+      "profile": "desktop",
+      "scores": {
+        "performance": 78,
+        "accessibility": 100,
+        "best-practices": 96,
+        "seo": 92
+      },
+      "metrics": {
+        "lcpMs": 5455.4882,
+        "cls": 0.003514912881604754,
+        "tbtMs": 141
+      }
+    },
+    {
+      "page": "nft-emerald-ape-042",
+      "profile": "desktop",
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "best-practices": 96,
+        "seo": 92
+      },
+      "metrics": {
+        "lcpMs": 3759.308,
+        "cls": 0.02211056401481737,
+        "tbtMs": 116.5
+      }
+    },
+    {
+      "page": "home",
+      "profile": "mobile",
+      "scores": {
+        "performance": 78,
+        "accessibility": 100,
+        "best-practices": 96,
+        "seo": 92
+      },
+      "metrics": {
+        "lcpMs": 5448.5857,
+        "cls": 0.003514912881604754,
+        "tbtMs": 136.5
+      }
+    },
+    {
+      "page": "nft-emerald-ape-042",
+      "profile": "mobile",
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "best-practices": 96,
+        "seo": 92
+      },
+      "metrics": {
+        "lcpMs": 3771.6383749999995,
+        "cls": 0.02211056401481737,
+        "tbtMs": 119
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "phase": "final",
+    "capturedAt": "2026-10-31T05:59:28.207Z",
+    "node": "v26.13.0",
+    "npm": "npm/12.2.1",
+    "os": "win32 10.0.19045 x64",
+    "playwright": "^1.64.1",
+    "chromium": "156.0.8078.4",
+    "lighthouse": "13.6.0",
+    "chromeLauncher": "1.2.2",
+    "lighthouseConfig": "Mobile: lighthouse.config.json extends lighthouse:default with no overrides. Desktop: built-in Lighthouse desktop preset; config-path is omitted because it would override the preset. Screen viewport only is set to 414x896 mobile and 1440x900 desktop to match design references; throttling and scoring remain the Lighthouse defaults.",
+    "chromeLaunch": "ChromeLauncher default flags plus headless and no-sandbox required by this Windows runner; Lighthouse scoring/throttling defaults are unchanged",
+    "environment": "optimized Vite demo preview with MSW and Socket.IO active",
+    "throttling": "Lighthouse defaults for selected profile",
+    "runsPerPageAndProfile": 3,
+    "runFilter": "all scenarios"
+  },
+  "medians": [
+    {
+      "page": "home",
+      "profile": "desktop",
+      "scores": {
+        "performance": 93,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 1708.1355,
+        "cls": 0.00055315372251291,
+        "tbtMs": 15
+      }
+    },
+    {
+      "page": "nft-emerald-ape-042",
+      "profile": "desktop",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 1404.1118999999999,
+        "cls": 0.00006360803324099723,
+        "tbtMs": 11
+      }
+    },
+    {
+      "page": "home",
+      "profile": "mobile",
+      "scores": {
+        "performance": 72,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 6691.206,
+        "cls": 0.0001426513150612019,
+        "tbtMs": 237
+      }
+    },
+    {
+      "page": "nft-emerald-ape-042",
+      "profile": "mobile",
+      "scores": {
+        "performance": 78,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 5074.806125000001,
+        "cls": 0,
+        "tbtMs": 216
+      }
+    }
+  ]
+}
