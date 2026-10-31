@@ -535,6 +535,12 @@ test('telas de conta responsivas e capturas em desktop e mobile', async ({
       fullPage: true,
       scale: 'css',
     })
+    if (mobile)
+      await page.screenshot({
+        path: `docs/screenshots/stage8d/after/${path.slice(1)}-mobile.png`,
+        fullPage: true,
+        scale: 'css',
+      })
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -561,6 +567,12 @@ test('telas de conta responsivas e capturas em desktop e mobile', async ({
       fullPage: true,
       scale: 'css',
     })
+    if (path.endsWith('wallets'))
+      await page.screenshot({
+        path: `docs/screenshots/stage8d/after/wallets-${width}.png`,
+        fullPage: true,
+        scale: 'css',
+      })
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,

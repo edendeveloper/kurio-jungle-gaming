@@ -85,6 +85,12 @@ test('visual: Home desktop', async ({ page }, testInfo) => {
 test('visual: Home mobile', async ({ page }, testInfo) => {
   await setupPage(page, testInfo, 'mobile')
   await page.locator('.mobile-nft-grid .nft-card').first().waitFor({ state: 'visible' })
+  if (testInfo.project.name.includes('mobile'))
+    await page.screenshot({
+      path: 'docs/screenshots/stage8d/after/home-mobile.png',
+      fullPage: false,
+      scale: 'css',
+    })
   await compare(page, 'home-mobile')
 })
 
@@ -122,6 +128,12 @@ test('visual: Carrinho mobile', async ({ page }, testInfo) => {
     page.getByRole('link', { name: 'Conectar e finalizar' }),
   ).toBeInViewport()
   await expect(page.locator('.mobile-navigation')).toBeInViewport()
+  if (testInfo.project.name.includes('mobile'))
+    await page.screenshot({
+      path: 'docs/screenshots/stage8d/after/cart-mobile.png',
+      fullPage: false,
+      scale: 'css',
+    })
   await compare(page, 'cart-mobile')
 })
 

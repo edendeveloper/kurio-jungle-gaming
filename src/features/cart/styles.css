@@ -139,7 +139,7 @@
 }
 @media (max-width: 639px) {
   .cart-recommendations {
-    margin-top: 56px;
+    margin-top: 28px;
   }
   .cart-recommendations .section-heading h2 {
     font-size: 18px;
@@ -166,7 +166,7 @@
 
   .cart-page:has(.cart-lines) .commerce-columns {
     display: block;
-    padding-bottom: 430px;
+    padding-bottom: 0;
   }
   .cart-page .cart-lines {
     display: grid;
@@ -239,10 +239,10 @@
     min-height: 28px;
   }
   .cart-page:has(.cart-lines) .commerce-columns > aside {
-    position: fixed;
+    position: sticky;
     z-index: 40;
-    inset-inline: 0;
     bottom: calc(126px + env(safe-area-inset-bottom));
+    margin-top: 20px;
     padding: 10px 24px 12px;
     border-top: 1px solid var(--border-soft);
     border-radius: 18px 18px 0 0;

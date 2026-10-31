@@ -46,6 +46,23 @@
   font-size: 24px;
   margin: 0 0 32px;
 }
+.account-layout:has(.account-sidebar [aria-current='page'][href='/profile/wallets'])
+  .account-content > .account-help {
+  max-width: 620px;
+  margin: 0 0 24px;
+  font-size: 13px;
+  line-height: 1.75;
+}
+.account-layout:has(.account-sidebar [aria-current='page'][href='/profile/wallets'])
+  .account-content > [data-account-focus] {
+  margin-bottom: 8px;
+}
+.account-layout:has(.account-sidebar [aria-current='page'][href='/profile/wallets'])
+  .account-content > .account-section {
+  margin-top: 20px;
+  padding-top: 24px;
+  line-height: 1.75;
+}
 .account-section {
   padding: 0 0 32px;
   margin-bottom: 32px;
@@ -493,22 +510,41 @@
     display: none;
   }
   .auth-panel {
-    border: 0;
-    background: var(--background);
-    padding: 0 28px 28px;
-    width: 100%;
+    position: fixed;
+    inset: 0;
+
+    box-sizing: border-box;
+
+    width: 100vw;
+    max-width: none;
+    min-width: 0;
+
     height: 100dvh;
-    max-height: 100dvh;
+    max-height: none;
+    min-height: 0;
+
     margin: 0;
+    border: 0;
     border-radius: 0;
+
+    padding:
+      max(52px, env(safe-area-inset-top))
+      24px
+      max(40px, env(safe-area-inset-bottom));
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    background: var(--background);
   }
   .auth-wordmark {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 136px;
-    margin: 80px 0 40px;
-    font-size: 32px;
+    height: 52px;
+    margin: 0 0 24px;
+    font-size: 28px;
     font-weight: 700;
   }
   .auth-tabs,
@@ -528,7 +564,7 @@
     line-height: 22px;
   }
   .auth-panel > form {
-    margin-top: 34px;
+    margin-top: 24px;
   }
   .auth-fields input {
     min-height: 50px !important;
@@ -538,18 +574,24 @@
   }
   .auth-submit {
     min-height: 60px;
-    margin-top: 40px;
+    margin-top: 24px;
   }
   .auth-social {
-    margin-top: 40px;
+    margin-top: 24px;
   }
   .auth-social > div {
-    gap: 20px;
+    gap: 12px;
   }
   .auth-social button {
     min-height: 50px;
   }
   .auth-switch {
-    margin-top: 40px;
+    margin-top: 24px;
+  }
+  .auth-guest {
+    margin-top: 18px;
+  }
+  .demo-login {
+    margin-top: 18px;
   }
 }

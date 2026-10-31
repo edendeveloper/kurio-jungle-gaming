@@ -1,1 +1,0 @@
-Feature de autenticação implementada na Etapa 6: cadastro, login/logout, sessão opaca validada pela API, expiração, guards e cancelamento de dados privados. Contratos, fixtures, política de sessão e instruções estão em [authentication.md](../../../docs/authentication.md). O identificador legado `kurio:session-user` não autentica mais.
