@@ -71,6 +71,43 @@
   --type-mobile-display-leading: 1.8125rem;
   --space-section: 6rem;
   --content-width: 75rem;
+  --surface-secondary: var(--surface-raised);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --background: #f7f1e7;
+  --foreground: #36261d;
+  --primary: #99501f;
+  --primary-foreground: #fff9f0;
+  --secondary: #725a45;
+  --secondary-foreground: #36261d;
+  --text-primary: #36261d;
+  --text-secondary: #725a45;
+  --text-accent: #8f4a1d;
+  --text-coral: #a33f29;
+  --surface-card: #fff9f0;
+  --surface-dark: #eddfce;
+  --surface-raised: #f0e4d7;
+  --surface-secondary: #eddfce;
+  --border: #ddc7b2;
+  --border-soft: #9b795d;
+  --success: #007c51;
+  --amber: #805500;
+  --card: var(--surface-card);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface-card);
+  --popover-foreground: var(--foreground);
+  --muted: var(--surface-secondary);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--surface-secondary);
+  --accent-foreground: var(--foreground);
+  --input: var(--border-soft);
+  --ring: var(--primary);
 }
 
 @theme inline {
@@ -88,6 +125,7 @@
   --color-text-coral: var(--text-coral);
   --color-surface-card: var(--surface-card);
   --color-surface-dark: var(--surface-dark);
+  --color-surface-secondary: var(--surface-secondary);
   --color-surface-raised: var(--surface-raised);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -241,6 +279,31 @@
   }
   .header-actions [data-slot='button'] img {
     width: 16px;
+  }
+  .theme-toggle {
+    display: inline-flex;
+    min-width: 76px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 9px;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    background: var(--surface-card);
+    color: var(--text-accent);
+    font-size: 11px;
+    line-height: 1;
+  }
+  .theme-toggle:hover {
+    background: var(--surface-raised);
+  }
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  .theme-toggle-compact {
+    display: none;
   }
   .icon-button {
     width: 28px;
@@ -409,8 +472,8 @@
     padding: 24px 16px 18px;
     background: linear-gradient(
       to bottom,
-      rgb(210 138 76 / 10%),
-      rgb(210 138 76 / 3%)
+      color-mix(in srgb, var(--primary) 10%, transparent),
+      color-mix(in srgb, var(--primary) 3%, transparent)
     );
   }
   .featured-banner h2 {
@@ -1082,7 +1145,7 @@
     place-items: center;
     background: linear-gradient(
       137deg,
-      rgb(210 138 76 / 45%) 24.6%,
+      color-mix(in srgb, var(--primary) 45%, transparent) 24.6%,
       var(--primary) 100%
     );
   }
@@ -1670,7 +1733,7 @@
   background-image: linear-gradient(
     100deg,
     transparent 20%,
-    rgb(210 138 76 / 12%) 50%,
+    color-mix(in srgb, var(--primary) 12%, transparent) 50%,
     transparent 80%
   );
   background-size: 200% 100%;
@@ -1787,5 +1850,46 @@ body:has(.filter-drawer[open]) {
   .nft-skeleton > *,
   .catalog-fetching svg {
     animation: none;
+  }
+}
+
+:root[data-theme='light'] .header-actions > .icon-button img,
+:root[data-theme='light'] .search-input img,
+:root[data-theme='light'] .mobile-navigation-items > a:not(.mobile-discover) img {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(18%) saturate(900%)
+    hue-rotate(342deg) brightness(91%) contrast(90%);
+}
+:root[data-theme='light'] .hero {
+  background-image: linear-gradient(125deg, #eddfce, #fff9f0 62%, #ead8c3);
+}
+:root[data-theme='light'] .mobile-navigation-surface {
+  background-image: none;
+  background-color: var(--surface-card);
+  border-top: 1px solid var(--border);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 24px rgb(54 38 29 / 10%);
+}
+:root[data-theme='light'] .mobile-navigation-items > [aria-current='page']:not(.mobile-discover) {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+}
+:root[data-theme='light'] .nft-main-image,
+:root[data-theme='light'] .nft-card-art,
+:root[data-theme='light'] .receipt-items img {
+  background-color: transparent;
+}
+
+@media (max-width: 767px) {
+  .mobile-navigation > .theme-toggle-compact {
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    right: 14px;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0;
+    pointer-events: auto;
   }
 }

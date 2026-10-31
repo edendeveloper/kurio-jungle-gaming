@@ -339,12 +339,11 @@ export function Catalog() {
                 ))}
               </div>
               <div className="mobile-nft-grid">
-                {response?.items.map((nft, index) => (
+                {response?.items.map((nft) => (
                   <NFTCard
                     key={nft.id}
                     nft={nft}
                     mobile
-                    showFavorite={index === 0}
                   />
                 ))}
               </div>

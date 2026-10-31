@@ -36,6 +36,19 @@ test('listagem via MSW traz metadados e nove registros', async ({ page }) => {
   ).toBeDisabled()
 })
 
+test('no catálogo mobile todos os cards exibem seu controle de favorito', async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(!isMobile, 'Verifica especificamente os cards do catálogo mobile')
+  await page.setViewportSize({ width: 414, height: 896 })
+  await page.goto('/marketplace')
+  await expect(cards(page)).toHaveCount(9)
+  for (const card of await cards(page).all()) {
+    await expect(card.getByRole('button', { name: /lista de interesse/ })).toBeVisible()
+  }
+})
+
 test('busca com debounce é combinada e ignora maiúsculas', async ({ page }) => {
   await page.goto('/marketplace')
   await expect(cards(page)).toHaveCount(9)

@@ -3,12 +3,15 @@ import { RouterProvider } from '@tanstack/react-router'
 import { queryClient } from './query-client'
 import { router } from './router'
 import { RealtimeConnection } from './realtime-connection'
+import { ThemeProvider } from '@/components/theme/theme-provider'
 
 export function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <RealtimeConnection />
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <RealtimeConnection />
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </ThemeProvider>
   )
 }

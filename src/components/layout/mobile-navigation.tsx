@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { ThemeToggle } from '@/components/theme/theme-toggle'
 
 function DiscoverIcon() {
   return (
@@ -18,6 +19,7 @@ export function MobileNavigation() {
   return (
     <nav className="mobile-navigation" aria-label="Navegação mobile">
       <div className="mobile-navigation-surface" aria-hidden="true" />
+      <ThemeToggle compact />
       <div className="mobile-navigation-items">
         <Link
           to="/"

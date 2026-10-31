@@ -4,6 +4,7 @@ import { PrimaryButton } from '@/components/ui/button'
 import { useCart } from '@/features/cart/api'
 import { useSession } from '@/features/auth/session'
 import { safeReturnTo } from '@/features/auth/validation'
+import { ThemeToggle } from '@/components/theme/theme-toggle'
 
 export function DesktopHeader({ cartQuantity }: { cartQuantity?: number }) {
   const cart = useCart()
@@ -47,6 +48,7 @@ export function DesktopHeader({ cartQuantity }: { cartQuantity?: number }) {
         </button>
       </nav>
       <div className="header-actions">
+        <ThemeToggle />
         <Link
           to="/marketplace"
           className="icon-button"
