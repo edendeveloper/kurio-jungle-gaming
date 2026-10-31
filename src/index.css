@@ -98,6 +98,9 @@
   --border-soft: #9b795d;
   --success: #007c51;
   --amber: #805500;
+  --mobile-navigation-surface: #eadacc;
+  --mobile-navigation-outline: #d6bda7;
+  --mobile-navigation-shadow: rgb(54 38 29 / 22%);
   --card: var(--surface-card);
   --card-foreground: var(--foreground);
   --popover: var(--surface-card);
@@ -1863,11 +1866,14 @@ body:has(.filter-drawer[open]) {
   background-image: linear-gradient(125deg, #eddfce, #fff9f0 62%, #ead8c3);
 }
 :root[data-theme='light'] .mobile-navigation-surface {
+  background-color: var(--mobile-navigation-surface);
   background-image: none;
-  background-color: var(--surface-card);
-  border-top: 1px solid var(--border);
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -8px 24px rgb(54 38 29 / 10%);
+  -webkit-mask: url('/assets/decorations/navigation-mobile.svg') center -9px /
+    calc(100% + 60px) 154.95px no-repeat;
+  mask: url('/assets/decorations/navigation-mobile.svg') center -9px /
+    calc(100% + 60px) 154.95px no-repeat;
+  filter: drop-shadow(0 -1px 0 var(--mobile-navigation-outline))
+    drop-shadow(0 -8px 14px var(--mobile-navigation-shadow));
 }
 :root[data-theme='light'] .mobile-navigation-items > [aria-current='page']:not(.mobile-discover) {
   background: color-mix(in srgb, var(--primary) 12%, transparent);

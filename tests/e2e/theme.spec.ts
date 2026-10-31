@@ -51,6 +51,64 @@ test('dark é padrão; alterna por teclado, persiste e gera capturas dos dois te
   expect(await page.evaluate(() => localStorage.getItem('kurio:theme'))).toBe('dark')
 })
 
+test('navbar mobile preserva contorno e geometria nos dois temas', async ({
+  page,
+}, testInfo) => {
+  test.skip(!testInfo.project.name.includes('mobile'), 'Validação da navbar mobile.')
+  await page.addInitScript(() => localStorage.setItem('kurio:theme', 'dark'))
+  await page.goto('/')
+
+  const navigation = page.locator('.mobile-navigation')
+  const surface = page.locator('.mobile-navigation-surface')
+  const discover = page.locator('.mobile-discover')
+
+  for (const [width, height] of [
+    [375, 667],
+    [390, 844],
+    [414, 896],
+  ]) {
+    await page.setViewportSize({ width, height })
+    await expect(navigation).toBeInViewport()
+    await expect(discover).toBeVisible()
+    await expect(page.locator('.mobile-navigation a[href="/"]')).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+
+    const darkGeometry = await Promise.all([
+      navigation.boundingBox(),
+      discover.boundingBox(),
+      page.getByRole('button', { name: 'Alternar tema. Tema atual: escuro' }).boundingBox(),
+    ])
+    await page.screenshot({
+      path: `${screenshots}/mobile-nav-${width}-dark.png`,
+      fullPage: false,
+      scale: 'css',
+    })
+
+    await page.getByRole('button', { name: 'Alternar tema. Tema atual: escuro' }).click()
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
+    await expect(surface).toHaveCSS('background-color', 'rgb(234, 218, 204)')
+    await expect(surface).toHaveCSS('mask-image', /navigation-mobile\.svg/)
+    await expect(surface).toHaveCSS('filter', /drop-shadow/)
+    const lightGeometry = await Promise.all([
+      navigation.boundingBox(),
+      discover.boundingBox(),
+      page.getByRole('button', { name: 'Alternar tema. Tema atual: claro' }).boundingBox(),
+    ])
+    expect(lightGeometry).toEqual(darkGeometry)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    await page.screenshot({
+      path: `${screenshots}/mobile-nav-${width}-light.png`,
+      fullPage: false,
+      scale: 'css',
+    })
+    await page.getByRole('button', { name: 'Alternar tema. Tema atual: claro' }).click()
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
+  }
+})
+
 test('tema light é aplicado antes do primeiro conteúdo e independe de autenticação', async ({
   page,
 }) => {
