@@ -18,6 +18,7 @@ import {
   LazyCartPage,
   LazyCheckoutPage,
   LazyCheckoutSuccessPage,
+  LazyFavoritesPage,
   LazyMarketplacePage,
   LazyNftPage,
   LazyProfilePage,
@@ -133,6 +134,16 @@ const walletsRoute = createRoute({
     </ProtectedContent>
   ),
 })
+const favoritesRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/profile/favorites',
+  beforeLoad: requireSession,
+  component: () => (
+    <ProtectedContent>
+      <LazyFavoritesPage />
+    </ProtectedContent>
+  ),
+})
 
 const authSearch = (input: Record<string, unknown>) => ({
   returnTo: safeReturnTo(input.returnTo),
@@ -180,6 +191,7 @@ const routeTree = rootRoute.addChildren([
   successRoute,
   profileRoute,
   walletsRoute,
+  favoritesRoute,
 ])
 export const router = createRouter({
   routeTree,

@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Badge } from '@/components/ui/badge'
 import { PriceLabel } from '@/components/ui/price-label'
+import { FavoriteToggle } from '@/features/favorites/toggle'
 import type { Nft } from '@/types/nft'
 import { cn } from '@/lib/utils'
 import { nftImageSrcSet } from '@/lib/nft-image'
@@ -8,7 +9,7 @@ import { nftImageSrcSet } from '@/lib/nft-image'
 export function NFTCard({
   nft,
   mobile = false,
-  showFavorite = false,
+  showFavorite = true,
   variant = 'catalog',
 }: {
   nft: Nft
@@ -44,25 +45,10 @@ export function NFTCard({
             height="1024"
           />
         </Link>
-        {mobile &&
-          (nft.rarity === 'rare' ? (
-            <Badge className="nft-rarity">RARO</Badge>
-          ) : showFavorite ? (
-            <button
-              className="nft-favorite"
-              type="button"
-              aria-label={`Favoritar ${label} (em breve)`}
-              aria-disabled="true"
-              title="Favoritos em breve"
-            >
-              <img
-                src="/assets/icons/favorite-mobile.svg"
-                alt=""
-                width="28"
-                height="28"
-              />
-            </button>
-          ) : null)}
+        {mobile && nft.rarity === 'rare' && (
+          <Badge className="nft-rarity">RARO</Badge>
+        )}
+        {showFavorite && <FavoriteToggle nftId={nft.id} name={label} />}
       </div>
       <div className="nft-card-info">
         {nft.name ? (

@@ -602,13 +602,14 @@ function compactReceiptId(value: string) {
 function OrderReceipt({ order }: { order: PurchaseOrder }) {
   return (
     <div className="order-card">
+      <header className="receipt-heading">
       <div className={`order-state-icon ${order.status}`}>
         {order.status === 'confirmed' ? (
-          <CheckCircle2 size={52} />
+          <CheckCircle2 size={40} />
         ) : order.status === 'rejected' ? (
-          <XCircle size={52} />
+          <XCircle size={40} />
         ) : (
-          <Clock3 size={52} />
+          <Clock3 size={40} />
         )}
       </div>
       <h2>
@@ -625,7 +626,8 @@ function OrderReceipt({ order }: { order: PurchaseOrder }) {
             ? order.reason
             : 'Aguardando a confirmação da API. Você pode recarregar esta página.'}
       </p>
-      <dl className="order-info">
+      </header>
+      <dl className="order-info receipt-info-band">
         <div>
           <dt>Pedido</dt>
           <dd aria-label={order.id} title={order.id}>
@@ -671,6 +673,11 @@ function OrderReceipt({ order }: { order: PurchaseOrder }) {
         )}
       </dl>
       <div className="receipt-items">
+        <div className="receipt-table-head" aria-hidden="true">
+          <span>Item</span>
+          <span>Quantidade</span>
+          <span>Subtotal</span>
+        </div>
         {order.items.map((item) => (
           <article key={`${item.nftId}:${item.edition}`}>
             <img
@@ -681,24 +688,23 @@ function OrderReceipt({ order }: { order: PurchaseOrder }) {
               width="64"
               height="64"
             />
-            <div>
+            <div className="receipt-item-product">
               <h3>{item.nft.name}</h3>
               <p>
                 Token #{item.nft.tokenId} · Edição {item.edition}/
                 {item.nft.totalEditions}
               </p>
-              <p>
-                Quantidade: {item.quantity} · Unitário: {item.nft.priceEth} ETH
-              </p>
-              <p>Subtotal: {item.subtotalEth} ETH</p>
             </div>
+            <p className="receipt-item-quantity">{item.quantity}</p>
+            <strong className="receipt-item-subtotal">
+              {item.subtotalEth} ETH
+            </strong>
           </article>
         ))}
       </div>
       <FinancialSummary totals={order.totals} coupon={order.coupon} />
       <p className="commerce-hint">
-        Comprovante de demonstração. Não há transação real ou link de explorador
-        blockchain.
+        Compra simulada: não houve pagamento nem transferência real de NFTs.
       </p>
       <SecondaryButton asChild>
         <Link to={order.status === 'rejected' ? '/cart' : '/marketplace'}>

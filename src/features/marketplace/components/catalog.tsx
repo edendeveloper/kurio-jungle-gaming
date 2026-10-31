@@ -14,8 +14,80 @@ import {
   type Sort,
 } from '../types/catalog'
 import { CatalogFiltersForm } from './catalog-filters'
-import { artwork } from '../data/home'
 import { nftImageSrcSet } from '@/lib/nft-image'
+import { useNft } from '@/features/nft/hooks'
+import { PriceLabel } from '@/components/ui/price-label'
+import { discountPercent } from '@/lib/money'
+import { Link } from '@tanstack/react-router'
+
+function FeaturedNft() {
+  const query = useNft('sage-nomad-009')
+  const nft = query.data
+  const discount =
+    nft?.originalPriceEth &&
+    discountPercent(nft.priceEth, nft.originalPriceEth)
+  const token = nft?.tokenId.padStart(3, '0')
+  const featuredName = nft
+    ? /#\d+/.test(nft.name)
+      ? nft.name
+      : `${nft.name} #${token}`
+    : ''
+
+  return (
+    <div className="featured-banner">
+      <h2>NFT EM DESTAQUE</h2>
+      {query.isPending ? (
+        <p role="status" className="featured-status">
+          Carregando destaque…
+        </p>
+      ) : query.isError || !nft ? (
+        <div className="featured-status" role="alert">
+          <p>Não foi possível carregar o NFT em destaque.</p>
+          <button type="button" onClick={() => void query.refetch()}>
+            Tentar novamente
+          </button>
+        </div>
+      ) : (
+        <>
+          <p className="featured-tag">OBRA EM DESTAQUE</p>
+          <Link
+            to="/nft/$nftId"
+            params={{ nftId: nft.id }}
+            className="featured-art-link"
+            aria-label={`Ver detalhes de ${featuredName}`}
+          >
+            <img
+              src={nft.imageUrl}
+              srcSet={nftImageSrcSet(nft.imageUrl)}
+              sizes="300px"
+              alt={nft.imageAlt}
+              width="1254"
+              height="1254"
+              loading="lazy"
+            />
+          </Link>
+          <div className="featured-details">
+            <h3>{featuredName}</h3>
+            <div className="featured-price-row">
+              <PriceLabel
+                amount={nft.priceEth}
+                previousAmount={discount ? nft.originalPriceEth : undefined}
+              />
+              {discount && <span className="featured-discount">−{discount}</span>}
+            </div>
+            <Link
+              className="featured-cta"
+              to="/nft/$nftId"
+              params={{ nftId: nft.id }}
+            >
+              {discount ? 'Ver oferta' : 'Ver NFT'}
+            </Link>
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
 
 function SearchControl({
   applied,
@@ -189,19 +261,7 @@ export function Catalog() {
     >
       <aside className="filter-sidebar" aria-label="Filtros do catálogo">
         <CatalogFiltersForm filters={filters} update={update} clear={clear} />
-        <div className="featured-banner">
-          <h2>NFT EM DESTAQUE</h2>
-          <p>OFERTA LIMITADA</p>
-          <img
-            src={artwork.sage}
-            srcSet={nftImageSrcSet(artwork.sage)}
-            sizes="300px"
-            alt="Sage Nomad, NFT em destaque"
-            width="1254"
-            height="1254"
-            loading="lazy"
-          />
-        </div>
+        <FeaturedNft />
       </aside>
       <div className="catalog-content">
         <CatalogSearchBar />

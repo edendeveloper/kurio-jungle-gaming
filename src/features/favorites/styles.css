@@ -1,0 +1,48 @@
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+.favorites-state {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  padding: 28px 24px;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  background: var(--surface-card);
+}
+.favorites-state h2 {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.favorites-state p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+}
+@media (max-width: 767px) {
+  .favorites-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 16px;
+  }
+  .favorites-grid .nft-card-art {
+    aspect-ratio: 175 / 200;
+    padding: 12px 4px 20px;
+  }
+  .favorites-grid .nft-card:nth-child(even) .nft-card-art {
+    padding-block: 20px 12px;
+  }
+  .favorites-grid .nft-card-info {
+    padding: 8px 0 0 8px;
+  }
+  .favorites-grid .nft-card h3 {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .favorites-grid .price-label {
+    margin-top: 0;
+    font-size: 16px;
+    line-height: 18px;
+  }
+}

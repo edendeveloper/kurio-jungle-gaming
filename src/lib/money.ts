@@ -26,6 +26,15 @@ export function lineSubtotal(price: string, quantity: number): string {
     throw new Error('Quantidade inválida')
   return formatEth(ethUnits(price) * BigInt(quantity))
 }
+export function discountPercent(currentPrice: string, originalPrice: string) {
+  const current = ethUnits(currentPrice)
+  const original = ethUnits(originalPrice)
+  if (original <= current || original === 0n) return undefined
+  const tenths = ((original - current) * 1_000n + original / 2n) / original
+  const whole = tenths / 10n
+  const fractional = tenths % 10n
+  return fractional === 0n ? `${whole}%` : `${whole},${fractional}%`
+}
 export interface MoneyLine {
   priceEth: string
   quantity: number

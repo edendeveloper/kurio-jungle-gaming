@@ -2,6 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
   calculateTotals,
+  discountPercent,
   decimalEth,
   ethUnits,
   formatEth,
@@ -20,6 +21,13 @@ test('ETH preserves 18 places and calculates without floating point', () => {
     assert.equal(decimalEth(value), undefined)
   for (const quantity of [-1, 0.5, NaN, Infinity])
     assert.throws(() => lineSubtotal('1', quantity))
+})
+
+test('promotion percentage is derived exactly from a real lower and original price', () => {
+  assert.equal(discountPercent('1.99', '2.29'), '13,1%')
+  assert.equal(discountPercent('1', '2'), '50%')
+  assert.equal(discountPercent('2', '2'), undefined)
+  assert.equal(discountPercent('2', '1'), undefined)
 })
 
 test('realtime events are validated and resource versions reject duplicates and stale updates', () => {

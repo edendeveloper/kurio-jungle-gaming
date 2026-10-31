@@ -1,5 +1,14 @@
 import { Link } from '@tanstack/react-router'
-import { UserRound, Wallet, LogOut } from 'lucide-react'
+import {
+  Activity,
+  Download,
+  Heart,
+  LifeBuoy,
+  LogOut,
+  Tag,
+  UserRound,
+  Wallet,
+} from 'lucide-react'
 import { useAuthAction } from '@/features/auth/session'
 import type { ReactNode } from 'react'
 import './styles.css'
@@ -22,20 +31,38 @@ export function AccountLayout({
             activeProps={{ 'aria-current': 'page' }}
           >
             <UserRound size={18} />
-            Detalhes do perfil
+            Dados do perfil
           </Link>
           <Link to="/profile/wallets" activeProps={{ 'aria-current': 'page' }}>
             <Wallet size={18} />
             Carteiras
           </Link>
-          <button disabled title="Fora do escopo">
+          <button disabled title="Indisponível nesta demonstração">
+            <Activity size={18} aria-hidden="true" />
             Atividade
+            <span className="account-item-status">Indisponível</span>
           </button>
-          <button disabled title="Fora do escopo">
+          <Link
+            to="/profile/favorites"
+            activeProps={{ 'aria-current': 'page' }}
+          >
+            <Heart size={18} aria-hidden="true" />
+            Lista de interesse
+          </Link>
+          <button disabled title="Indisponível nesta demonstração">
+            <Tag size={18} aria-hidden="true" />
             Ofertas
+            <span className="account-item-status">Indisponível</span>
           </button>
-          <button disabled title="Fora do escopo">
-            Downloads
+          <button disabled title="Indisponível nesta demonstração">
+            <Download size={18} aria-hidden="true" />
+            Arquivos baixados
+            <span className="account-item-status">Indisponível</span>
+          </button>
+          <button disabled title="Indisponível nesta demonstração">
+            <LifeBuoy size={18} aria-hidden="true" />
+            Suporte
+            <span className="account-item-status">Indisponível</span>
           </button>
           <button
             type="button"

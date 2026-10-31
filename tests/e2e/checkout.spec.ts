@@ -1,5 +1,6 @@
 import { apiLogin, apiRequest, luna, nova } from './helpers/auth.ts'
 import { expect, test, type Page } from '@playwright/test'
+import { mkdir } from 'node:fs/promises'
 import type { CheckoutQuote, PurchaseOrder } from '../../src/types/checkout.ts'
 import type { CartResponse } from '../../src/types/collector.ts'
 
@@ -163,6 +164,12 @@ test('fluxo completo: detalhes, carrinho, cupom, checkout e comprovante persisti
   ).toBe(true)
   await expect(page.getByRole('link', { name: /Etherscan/ })).toHaveCount(0)
   await capture(page, `success-${mobile ? 'mobile' : 'desktop'}`)
+  await mkdir('docs/screenshots/ux-polish', { recursive: true })
+  await page.screenshot({
+    path: `docs/screenshots/ux-polish/confirmation-${mobile ? 'mobile' : 'desktop'}.png`,
+    fullPage: true,
+    scale: 'css',
+  })
 })
 
 test('bloqueia a cotação anterior e exige aceite explícito após nft.updated', async ({ page }) => {

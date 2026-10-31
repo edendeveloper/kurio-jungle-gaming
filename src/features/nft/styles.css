@@ -253,6 +253,7 @@ body:has(.nft-zoom-dialog[open]) {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 .nft-purchase-actions > [data-slot='button'],
 .nft-desktop-favorite > button {
@@ -269,6 +270,17 @@ body:has(.nft-zoom-dialog[open]) {
 }
 .nft-cart-shortcut {
   display: none;
+}
+.nft-cart-notice {
+  margin-top: 10px;
+  color: var(--success);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.nft-cart-notice a {
+  color: var(--text-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .nft-identity {
   margin-top: 13px;
@@ -463,7 +475,7 @@ body:has(.nft-zoom-dialog[open]) {
 }
 @media (max-width: 767px) {
   .nft-shell.app-shell {
-    padding-bottom: calc(188px + env(safe-area-inset-bottom));
+    padding-bottom: calc(230px + env(safe-area-inset-bottom));
   }
   .nft-shell .nft-route {
     width: 100%;
@@ -622,8 +634,8 @@ body:has(.nft-zoom-dialog[open]) {
     left: 0;
     width: 100%;
     margin: 0;
-    padding: 20px 24px calc(34px + env(safe-area-inset-bottom));
-    min-height: 164px;
+    padding: 14px 20px calc(18px + env(safe-area-inset-bottom));
+    min-height: 154px;
     display: block;
     border-top: 1px solid var(--border-soft);
     background: var(--surface-card);
@@ -661,23 +673,26 @@ body:has(.nft-zoom-dialog[open]) {
     line-height: 20px;
   }
   .nft-purchase-actions {
-    margin-top: 18px;
-    gap: 12px;
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
   }
   .nft-purchase-actions > [data-slot='button'] {
-    height: 60px;
-    width: 196px;
-    max-width: calc(100% - 72px);
-    font-size: 16px;
+    height: 48px;
+    width: 100%;
+    max-width: none;
+    padding-inline: 8px;
+    font-size: 12px;
   }
-  .nft-cart-shortcut {
-    display: grid;
-    place-items: center;
-    width: 60px;
-    height: 60px;
-    color: var(--text-accent);
-    border: 1px solid var(--primary);
-    border-radius: 6px;
+  .nft-purchase-actions .nft-desktop-favorite,
+  .nft-purchase-actions .nft-cart-shortcut {
+    display: none;
+  }
+  .nft-purchase .nft-cart-notice {
+    margin-top: 8px;
+    font-size: 10px;
+    text-align: center;
   }
   .nft-desktop-favorite {
     display: none;

@@ -9,9 +9,10 @@ import { Tabs } from '@/components/ui/tabs'
 import { NFTCard } from '@/components/marketplace/nft-card'
 import { networks } from '@/features/marketplace/types/catalog'
 import { useAddToCart } from '@/features/cart/api'
+import { useNftFavorite } from '@/features/favorites/hooks'
 import type { NftDetail } from '@/types/nft-detail'
 import { NftGallery } from './components/gallery'
-import { useNft, useNftFavorite, useRelatedNfts } from './hooks'
+import { useNft, useRelatedNfts } from './hooks'
 import { clampQuantity, totalEth } from './utils'
 import './styles.css'
 import { setPageMetadata } from '@/lib/seo'
@@ -55,6 +56,7 @@ function NftContent({
   const [requested, setRequested] = useState(1)
   const [tab, setTab] = useState('details')
   const [favoriteNotice, setFavoriteNotice] = useState('')
+  const [cartNotice, setCartNotice] = useState('')
   const quantity = clampQuantity(requested, nft.availability)
   if (quantity !== requested) setRequested(quantity)
   const favorite = useNftFavorite(nft.id)
@@ -106,6 +108,16 @@ function NftContent({
       { nftId: nft.id, edition: nft.edition, quantity },
       { onSuccess: () => void navigate({ to: '/cart' }) },
     )
+  const addToCart = () => {
+    setCartNotice('')
+    cart.mutate(
+      { nftId: nft.id, edition: nft.edition, quantity },
+      {
+        onSuccess: () =>
+          setCartNotice(`${quantity} ${quantity === 1 ? 'item adicionado' : 'itens adicionados'} ao carrinho.`),
+      },
+    )
+  }
   const quantityControl = (
     <div className="nft-quantity">
       <span>Qtd.</span>
@@ -210,6 +222,13 @@ function NftContent({
                     ? 'Indisponível'
                     : 'Comprar NFT'}
               </PrimaryButton>
+              <SecondaryButton
+                className="nft-add-to-cart"
+                disabled={soldOut || cart.isPending || refreshing}
+                onClick={addToCart}
+              >
+                Adicionar ao carrinho
+              </SecondaryButton>
               <div className="nft-desktop-favorite">{favoriteButton}</div>
               <Link
                 to="/cart"
@@ -222,6 +241,12 @@ function NftContent({
             {cart.isError && (
               <p role="alert" className="nft-action-error">
                 {cart.error.message}
+              </p>
+            )}
+            {cartNotice && (
+              <p className="nft-cart-notice" role="status">
+                {cartNotice}{' '}
+                <Link to="/cart">Ver carrinho</Link>
               </p>
             )}
           </div>

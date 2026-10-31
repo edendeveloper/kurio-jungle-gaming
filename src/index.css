@@ -406,7 +406,7 @@
   }
   .featured-banner {
     margin-top: 24px;
-    padding-top: 24px;
+    padding: 24px 16px 18px;
     background: linear-gradient(
       to bottom,
       rgb(210 138 76 / 10%),
@@ -418,20 +418,75 @@
     line-height: 32px;
     color: var(--text-accent);
     font-weight: 700;
-    padding-inline: 20px;
+    padding-inline: 4px;
   }
-  .featured-banner p {
-    font-size: 22px;
+  .featured-tag {
+    font-size: 11px;
     line-height: 16px;
-    font-weight: 700;
-    text-align: center;
-    margin-block: 16px;
+    letter-spacing: .08em;
+    color: var(--text-secondary);
+    text-align: left;
+    margin: 12px 4px 14px;
   }
   .featured-banner img {
-    width: 310px;
-    height: 368px;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1.08;
     object-fit: cover;
-    border-radius: 22px;
+    border-radius: 18px;
+  }
+  .featured-details {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px 12px;
+    margin-top: 14px;
+  }
+  .featured-details h3 {
+    min-width: 0;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+  .featured-price-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    grid-column: 1;
+  }
+  .featured-price-row .price-label {
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .featured-discount {
+    color: var(--success);
+    font-size: 11px;
+  }
+  .featured-cta {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    color: var(--text-accent);
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .featured-status {
+    margin: 16px 4px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .featured-status button {
+    display: block;
+    margin-top: 8px;
+    color: var(--text-accent);
+    text-decoration: underline;
   }
   .catalog-content {
     min-width: 0;
@@ -516,6 +571,27 @@
   }
   .nft-card-info {
     padding-top: 12px;
+  }
+  .nft-favorite {
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    right: 8px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-soft);
+    border-radius: 50%;
+    background: var(--surface-card);
+    color: var(--text-accent);
+  }
+  .nft-favorite[aria-pressed='true'] {
+    background: var(--surface-raised);
+  }
+  .nft-favorite:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
   }
   .nft-card h3 {
     font-size: 16px;

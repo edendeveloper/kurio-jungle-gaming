@@ -28,14 +28,13 @@ export function MobileNavigation() {
           <img src="/assets/icons/home-mobile.svg" alt="" width="16" height="17" />
           <span className="sr-only">Início</span>
         </Link>
-        <button
-          type="button"
-          aria-label="Favoritos (em breve)"
-          aria-disabled="true"
-          title="Favoritos em breve"
+        <Link
+          to="/profile/favorites"
+          aria-label="Lista de interesse"
+          activeProps={{ 'aria-current': 'page' }}
         >
           <img src="/assets/icons/heart-mobile.svg" alt="" width="20" height="18" />
-        </button>
+        </Link>
         <Link
           to="/marketplace"
           aria-label="Marketplace"

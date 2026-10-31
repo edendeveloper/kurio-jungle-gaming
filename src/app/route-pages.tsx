@@ -31,6 +31,11 @@ export const LazyWalletsPage = lazy(() =>
     default: module.WalletsPage,
   })),
 )
+export const LazyFavoritesPage = lazy(() =>
+  import('@/features/favorites/page').then((module) => ({
+    default: module.FavoritesPage,
+  })),
+)
 export const LazyAuthPage = lazy(() =>
   import('@/features/auth/page').then((module) => ({ default: module.AuthPage })),
 )
